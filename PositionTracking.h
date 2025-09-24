@@ -12,7 +12,7 @@ class PositionTracking {
 public:
     PositionTracking(int posx, int velX);
     ~PositionTracking(); // not implemented for now
-    void updatePosition(int speed, int accel, int timeDiff);
+    void updatePosition(int accel, int timeDiff);
     std::pair<int, int> getLocSpe();
 private:
     // state consists of both position and velocity

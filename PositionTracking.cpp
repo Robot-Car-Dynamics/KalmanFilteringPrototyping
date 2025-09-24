@@ -1,6 +1,6 @@
 #include"PositionTracking.h"
 
-void PositionTracking::updatePosition(int speed, int accel, int timeDiff) {
+void PositionTracking::updatePosition(int accel, int timeDiff) {
     // the following represents updating the model
     // update based on previous state
     int predictedPositionX = positionX + velocityX * timeDiff;
