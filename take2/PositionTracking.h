@@ -11,7 +11,7 @@ using namespace std;
 
 class PositionTracking {
 public:
-    PositionTracking(int posX, int velX);
+    PositionTracking(int posX, int velX, int dt);
     ~PositionTracking(); // not implemented for now
     void updatePosition(int accel, int timeDiff);
     std::pair<int, int> getLocSpe();
