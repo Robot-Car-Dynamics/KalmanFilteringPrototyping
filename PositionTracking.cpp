@@ -1,4 +1,7 @@
 #include"PositionTracking.h"
+#include<vector>
+
+using namespace std;
 
 void PositionTracking::updatePosition(int accel, int timeDiff) {
     // the following represents updating the model
@@ -29,6 +32,21 @@ void PositionTracking::updatePosition(int accel, int timeDiff) {
     // reduce uncertainty after measurement
     posXUncertainty = (1 - kalmanGain) * posXUncertainty;
     velXUncertainty = (1 - kalmanGain) * velXUncertainty;
+}
+
+void PositionTracking::updatePosition(int accel, int timeDiff) {
+    // make initial estimate of model
+    /*
+    x_pred = F @ x_prev                - predicted state, will need to add control inputs in future
+    P_pred = F @ P_prev @ F.T + Q      - predicted uncertainty
+
+    F is vector model that predicts how the state moves forward
+    Q is process noise vector, represents uncertainty of model
+    */
+    // modify with new measurements to make final estimate
+    // calculate Kalman gain (between -1 and 1)
+    // correct prediction with Kalman gain and surprise term
+
 }
 
 PositionTracking::PositionTracking(int posx, int velX) {
