@@ -17,7 +17,8 @@ public:
     std::pair<int, int> getLocSpe();
 private:
     Matrix<2>    stateVector; // position, velocity
-    Matrix<2,2>  covariance;
+    Matrix<2,2>  uncertainty; // uncertainty of position, velocity
+    Matrix<2,2>  controlMatrix; // converts accel into delta pos and delta v
     Matrix<2,2>  stateTransition;
     Matrix<2,2>  processNoise;
     Matrix<2,1>  controlInput;
