@@ -11,7 +11,8 @@ class PositionTracking {
 public:
     PositionTracking(float posX, float velX, float posXUncert, float velXUncert, float accelNoise);
     ~PositionTracking(); // currently unused
-    void updatePosition(float accel, int dt);
+    void updatePosition(float accel, int dt, float voltage);
+    float voltageToSpeed(float voltage);
     float getPosX();
     float getVelX();
 private:
