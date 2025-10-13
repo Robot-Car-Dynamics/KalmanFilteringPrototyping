@@ -2,6 +2,7 @@
 #include <queue>
 #include <tuple>
 #include <iostream>
+#include <windows.h> // NOTE: only works on windows, linux equivalent is unistd.h. This is for the sleep() call
 
 using namespace std;
 
@@ -17,13 +18,14 @@ int main() {
     tuple<float, int, float> move = { 0.00134, 500, 1}; // voltage number irrelevant in this case, due to dummy function
     updateVals.push(move);
 
-    for (int i = 0; i < 20; i++) {
+    for (int i = 0; i < 150; i++) {
         updateVals.push(tuple<float, int, float>({0, 500, 1})); // adds zero acceleration updates. Should have constant speed.
     }
 
     cout << "updateVals length: " << updateVals.size() << endl;
 
     while(!updateVals.empty()) {
+        Sleep(500); // sleep 500ms, need usleep(microseconds) in unix
         tuple<float, int, float> element = updateVals.front();
         updateVals.pop();
         float accel = get<0>(element);
