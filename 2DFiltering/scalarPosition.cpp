@@ -2,14 +2,6 @@
 #include<math.h>
 #include "2DVelocity.h"
 
-float pow(float base, int exponent) {
-    float output = 1.0;
-    for (int i = 0; i < exponent; i++) {
-        output += base;
-    }
-    return output;
-}
-
 PositionTracking::PositionTracking(
     float posX = 0, 
     float velX = 0, 
@@ -65,7 +57,7 @@ void PositionTracking::updatePosition(float headingDeg, float accel, int dt, flo
     motion::velPerAxis(accel, headingDeg, accelX, accelY); // sets accelX and accelY appropriately
 
     float newPosX = this->xPosition + (this->xVelocity + (0.5 * accelX * pow(dt, 2))); // this averages old and new accel in position update
-    float newPosY = this->xPosition + (this->xVelocity + (0.5 * accelY * pow(dt, 2)));
+    float newPosY = this->yPosition + (this->yVelocity + (0.5 * accelY * pow(dt, 2)));
 
     float newPosXUncert = this->xPosUncert + (2 * this->xCovariance * dt) + (this->xVelUncert * pow(dt, 2)) + (pow(dt, 4) / 4) * this->accelNoise;
     float newPosYUncert = this->yPosUncert + (2 * this->yCovariance * dt) + (this->yVelUncert * pow(dt, 2)) + (pow(dt, 4) / 4) * this->accelNoise;
