@@ -17,7 +17,7 @@ public:
     float getVelX();
     float getVelY();
 private:
-    float xPosition, xVelocity, xPosUncert, xVelUncert, yPosition, yVelocity, yPosUncert, yVelUncert, accelNoise, xCovariance;
+    float xPosition, xVelocity, xPosUncert, xVelUncert, yPosition, yVelocity, yPosUncert, yVelUncert, velMagnitude, accelNoise, xCovariance, yCovariance;
 };
 
 
